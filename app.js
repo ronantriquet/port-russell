@@ -8,6 +8,7 @@ const app = express();
 // Permet de lire le JSON envoyé dans le corps des requêtes
 app.use(express.json());
 // Routes de l'API
+app.use('/catways/:id/reservations', require('./routes/reservations'));
 app.use('/catways', require('./routes/catways'));
 // Route de test
 app.get('/', (req, res) => {

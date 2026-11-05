@@ -41,8 +41,8 @@ paths:
               type: object
               required: [email, password]
               properties:
-                email: { type: string, example: admin@port-russell.fr }
-                password: { type: string, example: Russell2026! }
+                email: { type: string, example: utilisateur@exemple.fr }
+                password: { type: string, example: VotreMotDePasse }
       responses:
         '200':
           description: Connexion réussie (cookie `token` déposé)

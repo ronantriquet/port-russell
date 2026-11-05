@@ -29,3 +29,10 @@ router.post('/reservations', pageController.createReservation);
 router.get('/reservations/:id/edit', pageController.editReservationPage);
 router.put('/reservations/:id', pageController.updateReservation);
 router.delete('/reservations/:id', pageController.deleteReservation);
+
+// Utilisateurs
+router.get('/users', pageController.usersPage);
+router.post('/users', pageController.createUser);
+router.get('/users/:email/edit', pageController.editUserPage);
+router.put('/users/:email', pageController.updateUser);
+router.delete('/users/:email', pageController.deleteUser);

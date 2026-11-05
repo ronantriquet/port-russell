@@ -5,7 +5,10 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 const app = express();
-
+// Permet de lire le JSON envoyé dans le corps des requêtes
+app.use(express.json());
+// Routes de l'API
+app.use('/catways', require('./routes/catways'));
 // Route de test
 app.get('/', (req, res) => {
   res.send('Bienvenue au port de Russell ⚓');

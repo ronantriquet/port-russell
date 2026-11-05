@@ -4,11 +4,13 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
+const methodOverride = require('method-override');
 
 const auth = require('./middlewares/auth');
 const authController = require('./controllers/authController');
 
 const app = express();
+
 // Moteur de templates : les pages sont dans le dossier "views"
 app.set('view engine', 'ejs');
 app.set('views', './views');
@@ -22,6 +24,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 // Permet de lire les cookies (où est rangé le jeton de connexion)
 app.use(cookieParser());
+// Permet aux formulaires HTML d'envoyer des PUT et DELETE (via ?_method=...)
+app.use(methodOverride('_method'));
 
 // Connexion / déconnexion (routes publiques)
 app.post('/login', authController.login);
@@ -31,10 +35,10 @@ app.get('/logout', authController.logout);
 app.use('/catways/:id/reservations', auth, require('./routes/reservations'));
 app.use('/catways', auth, require('./routes/catways'));
 app.use('/users', auth, require('./routes/users'));
+
 // Pages du tableau de bord (protégées)
 app.use('/dashboard', auth, require('./routes/pages'));
 
-// Route de test
 // Page d'accueil (présentation + formulaire de connexion)
 app.get('/', (req, res) => {
   res.render('index', { error: req.query.error });

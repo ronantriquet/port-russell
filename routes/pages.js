@@ -15,5 +15,10 @@ router.use((req, res, next) => {
  * Routes des pages du tableau de bord (HTML).
  */
 router.get('/', pageController.dashboard);
+// Catways
+router.get('/catways', pageController.catwaysPage);
+router.post('/catways', pageController.createCatway);
+router.put('/catways/:id', pageController.updateCatway);
+router.delete('/catways/:id', pageController.deleteCatway);
 
 module.exports = router;

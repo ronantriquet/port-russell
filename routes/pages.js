@@ -22,3 +22,10 @@ router.put('/catways/:id', pageController.updateCatway);
 router.delete('/catways/:id', pageController.deleteCatway);
 
 module.exports = router;
+
+// Réservations
+router.get('/reservations', pageController.reservationsPage);
+router.post('/reservations', pageController.createReservation);
+router.get('/reservations/:id/edit', pageController.editReservationPage);
+router.put('/reservations/:id', pageController.updateReservation);
+router.delete('/reservations/:id', pageController.deleteReservation);
